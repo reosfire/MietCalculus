@@ -1,0 +1,104 @@
+\documentclass[11pt]{article}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage[english, russian]{babel}
+\usepackage{cmap}
+\usepackage{amsmath}
+\usepackage{mathabx}
+\usepackage{setspace}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+\onehalfspacing
+
+\title{CalculusExam}
+\author{reosfire}
+
+\begin{document}
+    \section{Определённый интеграл}
+        \subsection{Определение}
+        Пусть $f(x)$ определена на $[a; b]$, введём:
+        \begin{enumerate}
+            \item $\rho$ - разбиение $[a; b]$ - последовательность $x_0, x_1, ..., x_{n - 1}, x_n$ такая, что:\\
+             $x_0 = a, x_n = b$\\
+             $x_0 < x_1 < ... < x_{n - 1} < x_n$
+            \item $\Delta x_i = x_{i + 1} - x_i \qquad i \in[0; n - 1]$
+            \item $\lambda \rho = max\{\Delta x_i\}$ - мелкость разбиения
+            \item $c_i \in [x_i; x_i + 1]$ - произвольная точка отрезка разбиения
+        \end{enumerate}
+        Тогда определим интегральную сумму:\\
+        $S(\rho, \overline{c}) = \sum_{i=0}^{n-1} f(c_i)*\Delta x_i$\\
+        И если $\exists \lim_{\lambda \rho \to 0} S(\rho, \overline{c}) = I$,
+        тогда $f(x)$ - интегрируема на $[a; b]$, $I$ - интеграл, и обозначается: \[\int_{a}^{b}f(x)dx\]
+        
+        Распишем предел из определения по Коши:
+        \[\forall \varepsilon > 0 \quad \exists \delta > 0 \quad \forall \rho, \overline{c} \quad \lambda\rho < \delta \implies |S(\rho, \overline{c}) - I| < \varepsilon\]
+        
+        И по Гейне:
+        \[\forall \rho_k\]
+
+        \subsection{Примеры интегрируемой / не интегрируемой функций}
+
+        \subsection{Необходимое условие интегрируемости}
+
+        \subsection{Суммы дарбу}
+        \subsubsection{Определение}
+        Пусть $f(x)$ ограничена на $[a; b]$\\
+        Введём разбиение $\rho$ и его мелкость $\lambda \rho$ так же, как и в определении интеграла.\\
+        Т.к $f(x)$ ограничена на $[a; b]$, то она ограничена на всех её подотрезках(от противного),
+        а значит имеет $sup$ и $inf$ на каждом из них.\\
+        Обозначим
+        $\begin{array}{ll}
+            sup(f(x)) = M_i\\
+            inf(f(x)) = m_i
+        \end{array}$ \quad
+        где $x \in [x_i; x_{i + 1}] \quad i \in [0; n - 1]$\\
+        Тогда
+        $\begin{array}{ll}
+            \overline{S} = \sum_{i = 0}^{n - 1} M_i \Delta x_i \quad $ - верхняя сумма дарбу$\\
+            \underline{S} = \sum_{i = 0}^{n - 1} m_i \Delta x_i \quad $ - нижняя сумма дарбу$\\
+        \end{array}$
+
+        \subsubsection{Свойства}
+        \begin{enumerate}
+            \item $\forall \rho, \overline{c} \quad \underline{S}(\rho) \leq S(\rho, \overline{c}) \leq \overline{S}(\rho)$
+            
+            Док-во:\\
+            Рассмотрим $[x_i; x_{i + 1}]$\\
+            $x_i \leq c_i \leq x_{i + 1}$ \quad воспользуемся непрерывностью $f(x)$\\
+            $m_i \leq f(c_i) \leq M_i$ \quad домножим на $\Delta x_i$\\
+            $m_i\Delta x_i \leq f(c_i)\Delta x_i \leq M_i\Delta x_i$ \quad просуммируем по всем $i$\\
+            $\underline{S}(\rho) \leq S(\rho, \overline{c}) \leq \overline{S}(\rho)$
+
+            \item Добавление точки в $\rho$ не увеличивает $\overline{S}$, не уменьшает $\underline{S}$\\
+            $\underline{S}(\rho) \leq \underline{S}(\rho^*) \leq \overline{S}(\rho^*) \leq \overline{S}(\rho)$
+
+            \item Если $\rho^*$ получена из $\rho$ добавлением конечного числа точек, выполняются те же неравенства.
+            $\underline{S}(\rho) \leq \underline{S}(\rho^*) \leq \overline{S}(\rho^*) \leq \overline{S}(\rho)$
+
+            \item $\forall \rho_1, \rho_2 \quad \underline{S}(\rho_1) \leq \overline{S}(\rho_2)$
+            
+            \item Пусть $\rho_0$ - фиксированное, тогда\\
+             $\forall \rho \begin{array}{lllll}
+                \underline{S}(\rho) \leq \overline{S}(\rho_0) &\implies&
+                 \underline{S}(\rho)\ $ограничена сверху$ &\implies&
+                 \exists\ sup(\underline{S}(\rho)) = \underline{I}\\
+
+                \overline{S}(\rho) \geq \underline{S}(\rho_0) &\implies&
+                \overline{S}(\rho)\ $ограничена снизу$ &\implies&
+                \exists\ inf(\overline{S}(\rho)) = \overline{I}
+            \end{array}$
+        \end{enumerate}
+
+        \subsection{Критерий интегрируемости}
+        Пусть $f(x)$ - ограничена на $[a; b]$, тогда равносильны следующие утверждения:
+        \begin{enumerate}
+            \item $\lim_{\lambda \rho \to 0} (\overline{S} - \underline{S}) = 0$
+            \item $\forall \varepsilon > 0 \quad \exists \rho \quad \overline{S} - \underline{S} < \varepsilon$
+            \item $\overline{I} = \underline{I}$
+            \item $f(x)$ интегрируема на $[a; b]$ 
+        \end{enumerate}
+        $\int_{a}^{b} f(x)dx = \overline{I} = \underline{I} = \lim_{\lambda \rho \to 0} (\overline{S}) = \lim_{\lambda \rho \to 0} (\underline{S})$
+
+        \subsection{Определение площади / геометрический смысл определённого интеграла}
+        
+\end{document}
