@@ -5,6 +5,7 @@
 \usepackage[english, russian]{babel}
 \usepackage{cmap}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{mathabx}
 \usepackage{setspace}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
@@ -25,37 +26,37 @@
             \item $\lambda \rho = max\{\Delta x_i\}$ - мелкость разбиения
             \item $c_i \in [x_i; x_i + 1]$ - произвольная точка отрезка разбиения
         \end{enumerate}
-        Тогда определим интегральную сумму:\\
+        Тогда определим интегральную сумму:
         $S(\rho, \overline{c}) = \sum_{i=0}^{n-1} f(c_i)*\Delta x_i$\\
         И если $\exists \lim_{\lambda \rho \to 0} S(\rho, \overline{c}) = I$,
         тогда $f(x)$ - интегрируема на $[a; b]$, $I$ - интеграл, и обозначается: \[\int_{a}^{b}f(x)dx\]
-        
         Распишем предел из определения по Коши:
         \[\forall \varepsilon > 0 \quad \exists \delta > 0 \quad \forall \rho, \overline{c} \quad \lambda\rho < \delta \implies |S(\rho, \overline{c}) - I| < \varepsilon\]
-        
         И по Гейне:
-        \[\forall \rho_k\]
-
-        \subsection{Примеры интегрируемой / не интегрируемой функций}
+        \[\forall \{\rho_k\}, \{\overline{c}_k\} \quad \lambda\rho \to 0 \implies \lim_{k \to \infty} S(\rho_k, \overline{c}_k) = I\]
 
         \subsection{Необходимое условие интегрируемости}
+        Теорема: $f(x)$ интегрируема на $[a; b] \quad \implies f(x)$ - ограничена на $[a; b]$\\
+        Док-во(от противного):
 
-        \subsection{Суммы дарбу}
+        Пусть $f(x)$ неограничена на $[a; b]$ тогда $\exists [x_i; x_{i + 1}]$, на котором она неограничена.
+
+        \subsection{Суммы Дарбу}
         \subsubsection{Определение}
         Пусть $f(x)$ ограничена на $[a; b]$\\
         Введём разбиение $\rho$ и его мелкость $\lambda \rho$ так же, как и в определении интеграла.\\
         Т.к $f(x)$ ограничена на $[a; b]$, то она ограничена на всех её подотрезках(от противного),
-        а значит имеет $sup$ и $inf$ на каждом из них.\\
+        а значит имеет $\sup$ и $\inf$ на каждом из них.\\
         Обозначим
         $\begin{array}{ll}
-            sup(f(x)) = M_i\\
-            inf(f(x)) = m_i
+            \sup(f(x)) = M_i\\
+            \inf(f(x)) = m_i
         \end{array}$ \quad
         где $x \in [x_i; x_{i + 1}] \quad i \in [0; n - 1]$\\
         Тогда
         $\begin{array}{ll}
-            \overline{S} = \sum_{i = 0}^{n - 1} M_i \Delta x_i \quad $ - верхняя сумма дарбу$\\
-            \underline{S} = \sum_{i = 0}^{n - 1} m_i \Delta x_i \quad $ - нижняя сумма дарбу$\\
+            \overline{S} = \sum_{i = 0}^{n - 1} M_i \Delta x_i \quad $ - верхняя сумма Дарбу$\\
+            \underline{S} = \sum_{i = 0}^{n - 1} m_i \Delta x_i \quad $ - нижняя сумма Дарбу$\\
         \end{array}$
 
         \subsubsection{Свойства}
@@ -81,11 +82,11 @@
              $\forall \rho \begin{array}{lllll}
                 \underline{S}(\rho) \leq \overline{S}(\rho_0) &\implies&
                  \underline{S}(\rho)\ $ограничена сверху$ &\implies&
-                 \exists\ sup(\underline{S}(\rho)) = \underline{I}\\
+                 \exists\ \sup(\underline{S}(\rho)) = \underline{I}\\
 
                 \overline{S}(\rho) \geq \underline{S}(\rho_0) &\implies&
                 \overline{S}(\rho)\ $ограничена снизу$ &\implies&
-                \exists\ inf(\overline{S}(\rho)) = \overline{I}
+                \exists\ \inf(\overline{S}(\rho)) = \overline{I}
             \end{array}$
         \end{enumerate}
 
@@ -100,5 +101,27 @@
         $\int_{a}^{b} f(x)dx = \overline{I} = \underline{I} = \lim_{\lambda \rho \to 0} (\overline{S}) = \lim_{\lambda \rho \to 0} (\underline{S})$
 
         \subsection{Определение площади / геометрический смысл определённого интеграла}
+        Определим прямоугольник $Rect(a, b, c, d) = \left\{ (x, y) \in \mathbb{R} \left\vert\begin{array}{l}
+            x \in [a; b]\\
+            y \in [c; d]
+        \end{array}\right. \right\}$\\
+        И определим его площадь $S(Rect(a, b, c, d)) = (b - a)(d - c)$\\
+        Пусть $\sigma = \lor_{i = 1}^{n} Rect_i$ - множество точек, 
+        полученное объединением $n$ прямоугольников, пересекающихся не больше, чем по стороне.
+        Тогда $S(\sigma) = \sum_{i=1}^{n} S(Rect_i)$
+
+        Пусть дана фигура (произвольное множество точек) $A$.\\
+        Пусть существует прямоугольник $B$ такой, что $A \subset B$, если нет, то и площади у такой фигуры нет.
+
+        Рассмотрим $\sigma^+$ - такая $\sigma$, что $A \subset \sigma^+$. Она всегда существует (как минимум $B$)\\
+        Заметим, что $S(\sigma^+) \geq 0$ (как и от любой другой $\sigma$),
+         значит $\exists\ \inf(S(\sigma^+)) = S^+(A)$ - определение верхней площади.
+
+        Теперь рассмотрим $\sigma^-$ - такая $\sigma$, что $\sigma^- \subset A$. Она может и не существовать(ф-ия Дирихле)
+         тогда считаем, что площади у фигуры нет.\\
+        Но если существует, то $S(\sigma^-) \leq S(B)$ т.к $\sigma^- \subset A \subset B$, 
+         значит $\exists \sup(S(\sigma^-)) = S^-(A)$ - определение нижней площади.
+
+        Если $S^+(A) = S^-(A)\ =\ S(A)$, то $S(A)$ - площадь $A$.
         
 \end{document}
