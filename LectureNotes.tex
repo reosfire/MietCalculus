@@ -162,5 +162,57 @@
         $S(Tr(a, b, f)) = \int_{a}^{b} f(x)dx$\\
         $S(\sigma^+) = \overline{S}(\rho)$\\
         $S(\sigma^-) = \underline{S}(\rho)$
-        
+
+        \subsection{Свойства определённого интеграла}
+        \begin{enumerate}
+            \item Аддитивность.\\
+            Если $f(x)$ - инт на $[a; b] \implies \forall c \in [a; b] \quad f(x) - $ инт на $[a; c]$ и $[c; b]$,\quad и наоборот.
+            \[\int_{a}^{b}f(x)dx = \int_{a}^{c}f(x)dx + \int_{c}^{b}f(x)dx\]
+            Док-во:\\
+            Пользуемся тем, что\quad
+            $\forall \varepsilon > 0 \quad \exists \rho \quad \overline{S}(\rho) - \underline{S}(\rho) < \varepsilon \iff f(x) -$ инт на $[a; b]$\\
+
+            $(\implies)$
+            Дано: $f(x) -$ инт на $[a; b]$ \quad т.е \quad
+            $\forall \varepsilon > 0 \quad \exists \rho \quad \overline{S}(\rho) - \underline{S}(\rho) < \varepsilon$\\
+            Пусть $\rho^*$ - разбиение, полученное добавлением точки $c$ в $\rho$, тогда:\\
+            $\overline{S}(\rho^*) \leq \overline{S}(\rho)$, \quad $\underline{S}(\rho^*) \geq \underline{S}(\rho)$\\
+            Рассмотрим разбиение $\rho_1$, полученное из $\rho^*$ выкидыванием всех точек, не входящих в $[a; c]$.
+            Получим: $\overline{S}(\rho_1) - \underline{S}(\rho_1) \leq \overline{S}(\rho^*) - \underline{S}(\rho^*) < \varepsilon$
+            
+            Это верно потому, что разность между соответствующими элементами верхней и нижней суммами дарбу всегда неотрицательная.
+            И т.к $\rho^*$ получается из $\rho_1$ добавлением точек, лежащих вне отрезка, в котором лежат все точки $\rho^*$, 
+            то если мы вычтем из правой части неравенства левую, то получим некоторое число неотрицательных слогаемых.\\
+            $(\impliedby)$ Дано: $\forall \varepsilon > 0 \quad \exists \rho_1, \rho_2 \quad \begin{array}{l}
+                \overline{S}(\rho_1) - \underline{S}(\rho_1) < \frac{\varepsilon}{2} \\
+                \overline{S}(\rho_2) - \underline{S}(\rho_2) < \frac{\varepsilon}{2} \\
+            \end{array}$,
+            где $\rho_1, \rho_ 2$ - разбиения $[a; c], [c; b]$.\\
+            Сложим неравенства: $\overline{S}(\rho_1) - \underline{S}(\rho_1) + \overline{S}(\rho_2) - \underline{S}(\rho_2) < \varepsilon$\\
+            $\overline{S}(\rho_1) + \overline{S}(\rho_2) - (\underline{S}(\rho_1) + \underline{S}(\rho_2)) < \varepsilon$\\
+            $\overline{S}(\rho) - \underline{S}(\rho) < \varepsilon$\\
+            
+            Определение: если $a > b$, то $\int_{a}^{b}f(x)dx = -\int_{b}^{a}f(x)dx$
+            \item Однородность.\\
+            
+            \item Произведение.\\
+            
+            \item Переход к неравенству.\\
+            
+            \item Модуль.\\
+            
+        \end{enumerate}
+
+        \subsection{Теорема о среднем}
+
+        \subsection{Достаточные признаки интегрируемости}
+        \begin{enumerate}
+            \item Непрерывные
+            
+            \item Монотонные
+            
+        \end{enumerate}
+
+        \subsection{Интеграл как функция верхнего предела}
+
 \end{document}
